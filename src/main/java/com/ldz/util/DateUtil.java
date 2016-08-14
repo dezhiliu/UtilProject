@@ -35,7 +35,8 @@ public class DateUtil {
 	}
 
 	/**
-	 * turn Date Object to String use regular format
+	 * turn Date Object to String use regular format use default regular
+	 * yyyy-MM-dd HH:mm:ss:SSSZ
 	 * 
 	 * @param date
 	 * @param format
@@ -53,12 +54,13 @@ public class DateUtil {
 	 * @return
 	 */
 	public static String Date2String(Date date, String format) {
-		DateFormat simformat = new SimpleDateFormat(format);
-		return simformat.format(date);
+		DateFormat df = new SimpleDateFormat(format);
+		return df.format(date);
 	}
 
 	/**
-	 * turn String to Date Object use regular format
+	 * turn String to Date Object use regular format use default regular
+	 * yyyy-MM-dd HH:mm:ss:SSSZ
 	 * 
 	 * @param date
 	 * @param format
@@ -79,7 +81,59 @@ public class DateUtil {
 	 */
 	public static Date string2Date(String date, String format)
 			throws ParseException {
-		DateFormat simformat = new SimpleDateFormat(format);
-		return simformat.parse(date);
+		DateFormat df = new SimpleDateFormat(format);
+		return df.parse(date);
+	}
+
+	/**
+	 * turn millisecond timeStamp to String use default regular yyyy-MM-dd
+	 * HH:mm:ss:SSSZ
+	 * 
+	 * @param millisecond
+	 * @param format
+	 * @return
+	 */
+	public static String timestamp2String(long millisecond) {
+		return timestamp2String(millisecond, DEFAULT_FORMAT);
+	}
+
+	/**
+	 * turn millisecond timeStamp to String
+	 * 
+	 * @param millisecond
+	 * @param format
+	 * @return
+	 */
+	public static String timestamp2String(long millisecond, String format) {
+		DateFormat df = new SimpleDateFormat(format);
+		return df.format(new Date(millisecond));
+	}
+
+	/**
+	 * turn String to millisecond timeStamp use default regular yyyy-MM-dd
+	 * HH:mm:ss:SSSZ
+	 * 
+	 * 
+	 * @param date
+	 * @param format
+	 * @return
+	 * @throws ParseException
+	 */
+	public static long string2Timestamp(String date) throws ParseException {
+		return string2Timestamp(date, DEFAULT_FORMAT);
+	}
+
+	/**
+	 * turn String to millisecond timeStamp
+	 * 
+	 * @param date
+	 * @param format
+	 * @return
+	 * @throws ParseException
+	 */
+	public static long string2Timestamp(String date, String format)
+			throws ParseException {
+		DateFormat df = new SimpleDateFormat(format);
+		return df.parse(date).getTime();
 	}
 }
