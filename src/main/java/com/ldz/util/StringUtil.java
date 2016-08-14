@@ -3,7 +3,7 @@ package com.ldz.util;
 /**
  * String tool class .
  * 
- * @author Administrator
+ * @author Jenkin
  */
 public class StringUtil {
 
