@@ -1,5 +1,10 @@
 package com.ldz.util;
 
+/**
+ * Array tool class
+ * 
+ * @author Jenkin
+ */
 public class ArrayUtil {
 
 	/**
