@@ -9,7 +9,7 @@ public class ArrayUtil {
 
 	/**
 	 * Returns the index of the first occurrence of the specified element in
-	 * this list, or -1 if this list does not contain the element.
+	 * this array, or -1 if this array does not contain the element.
 	 * 
 	 * @param elementData
 	 * @param o
