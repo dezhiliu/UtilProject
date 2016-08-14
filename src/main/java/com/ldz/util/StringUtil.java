@@ -19,4 +19,30 @@ public class StringUtil {
 		}
 		return false;
 	}
+
+	/**
+	 * turn str to uppercase . if str value is null , return null .
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static String toUpperCase(String str) {
+		if (str == null) {
+			return null;
+		}
+		return str.toUpperCase();
+	}
+
+	/**
+	 * turn str to lowercase . if str value is null , return null .
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static String toLowerCase(String str) {
+		if (str == null) {
+			return null;
+		}
+		return str.toLowerCase();
+	}
 }
