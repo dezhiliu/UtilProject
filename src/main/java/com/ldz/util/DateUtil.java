@@ -30,7 +30,7 @@ public class DateUtil {
 	 * @param date
 	 * @return
 	 */
-	public static long Date2Timestamp(Date date) {
+	public static long date2Timestamp(Date date) {
 		return date.getTime();
 	}
 
@@ -42,8 +42,8 @@ public class DateUtil {
 	 * @param format
 	 * @return
 	 */
-	public static String Date2String(Date date) {
-		return Date2String(date, DEFAULT_FORMAT);
+	public static String date2String(Date date) {
+		return date2String(date, DEFAULT_FORMAT);
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class DateUtil {
 	 * @param format
 	 * @return
 	 */
-	public static String Date2String(Date date, String format) {
+	public static String date2String(Date date, String format) {
 		DateFormat df = new SimpleDateFormat(format);
 		return df.format(date);
 	}
@@ -113,7 +113,6 @@ public class DateUtil {
 	 * turn String to millisecond timeStamp use default regular yyyy-MM-dd
 	 * HH:mm:ss:SSSZ
 	 * 
-	 * 
 	 * @param date
 	 * @param format
 	 * @return
@@ -135,5 +134,198 @@ public class DateUtil {
 			throws ParseException {
 		DateFormat df = new SimpleDateFormat(format);
 		return df.parse(date).getTime();
+	}
+
+	/**
+	 * compute reduction sub minuend
+	 * 
+	 * @param reduction
+	 * @param minuend
+	 * @return
+	 * @throws ParseException
+	 */
+	public static long sub(String reduction, String minuend)
+			throws ParseException {
+		return sub(reduction, minuend, DEFAULT_FORMAT);
+	}
+
+	/**
+	 * compute reduction sub minuend
+	 * 
+	 * @param reduction
+	 * @param minuend
+	 * @return
+	 * @throws ParseException
+	 */
+	public static long sub(String reduction, String minuend, String format)
+			throws ParseException {
+		return string2Timestamp(reduction, format)
+				- string2Timestamp(minuend, format);
+	}
+
+	/**
+	 * compute reduction sub minuend
+	 * 
+	 * @param reduction
+	 * @param minuend
+	 * @return
+	 */
+	public static long sub(Date reduction, Date minuend) {
+		return date2Timestamp(reduction) - date2Timestamp(minuend);
+	}
+
+	/**
+	 * compute reduction sub minuend
+	 * 
+	 * @param reduction
+	 * @param minuend
+	 * @return
+	 */
+	public static long sub(long reduction, long minuend) {
+		return reduction - minuend;
+	}
+
+	/**
+	 * compute addend add augend
+	 * 
+	 * @param reduction
+	 * @param minuend
+	 * @return
+	 * @throws ParseException
+	 */
+	public static long add(String addend, String augend) throws ParseException {
+		return add(addend, augend, DEFAULT_FORMAT);
+	}
+
+	/**
+	 * compute addend add augend
+	 * 
+	 * @param reduction
+	 * @param minuend
+	 * @return
+	 * @throws ParseException
+	 */
+	public static long add(String addend, String augend, String format)
+			throws ParseException {
+		return string2Timestamp(addend, format)
+				+ string2Timestamp(augend, format);
+	}
+
+	/**
+	 * compute addend add augend
+	 * 
+	 * @param reduction
+	 * @param minuend
+	 * @return
+	 */
+	public static long add(Date addend, Date augend) {
+		return date2Timestamp(addend) + date2Timestamp(augend);
+	}
+
+	/**
+	 * compute addend add augend
+	 * 
+	 * @param reduction
+	 * @param minuend
+	 * @return
+	 */
+	public static long add(long addend, long augend) {
+		return addend + augend;
+	}
+
+	/**
+	 * compare dateOne and dateTwo , if dateOne small , return true , else
+	 * return false .
+	 * 
+	 * @param dateOne
+	 * @param dateTwo
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean before(String dateOne, String dateTwo)
+			throws ParseException {
+		return before(dateOne, dateTwo, DEFAULT_FORMAT);
+	}
+
+	/**
+	 * compare dateOne and dateTwo , if dateOne small , return true , else
+	 * return false .
+	 * 
+	 * @param dateOne
+	 * @param dateTwo
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean before(String dateOne, String dateTwo, String format)
+			throws ParseException {
+		if (string2Timestamp(dateOne, format) < string2Timestamp(dateTwo,
+				format)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * compare dateOne and dateTwo , if dateOne bigger , return true , else
+	 * return false .
+	 * 
+	 * @param dateOne
+	 * @param dateTwo
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean after(String dateOne, String dateTwo)
+			throws ParseException {
+		return after(dateOne, dateTwo, DEFAULT_FORMAT);
+	}
+
+	/**
+	 * compare dateOne and dateTwo , if dateOne bigger , return true , else
+	 * return false .
+	 * 
+	 * @param dateOne
+	 * @param dateTwo
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean after(String dateOne, String dateTwo, String format)
+			throws ParseException {
+		if (string2Timestamp(dateOne, format) > string2Timestamp(dateTwo,
+				format)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * compare dateOne and dateTwo , if they are equals , return true , else
+	 * return false .
+	 * 
+	 * @param dateOne
+	 * @param dateTwo
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean equal(String dateOne, String dateTwo)
+			throws ParseException {
+		return equal(dateOne, dateTwo, DEFAULT_FORMAT);
+	}
+
+	/**
+	 * compare dateOne and dateTwo , if they are equals , return true , else
+	 * return false .
+	 * 
+	 * @param dateOne
+	 * @param dateTwo
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean equal(String dateOne, String dateTwo, String format)
+			throws ParseException {
+		if (string2Timestamp(dateOne, format) == string2Timestamp(dateTwo,
+				format)) {
+			return true;
+		}
+		return false;
 	}
 }
