@@ -15,6 +15,16 @@ public class DateUtil {
 	public static final String DEFAULT_FORMAT = "yyyy-MM-dd HH:mm:ss:SSSZ";
 
 	/**
+	 * generate default format .
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static String getDefaultFormat(String date) {
+		return DEFAULT_FORMAT.substring(0, date.length());
+	}
+
+	/**
 	 * turn millisecond timeStamp to Date Object
 	 * 
 	 * @param millisecond
